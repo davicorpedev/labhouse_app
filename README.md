@@ -1,0 +1,3 @@
+# LabHouse ChatGPT App
+
+## Config
