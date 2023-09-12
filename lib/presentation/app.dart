@@ -5,6 +5,7 @@ import 'package:labhouse_app/data/client/api_client.dart';
 import 'package:labhouse_app/data/client/api_requester.dart';
 import 'package:labhouse_app/presentation/app_initializer.dart';
 import 'package:labhouse_app/presentation/pages/home_page.dart';
+import 'package:labhouse_app/presentation/repository_builder.dart';
 import 'package:labhouse_app/presentation/style/theming/app_themes.dart';
 import 'package:labhouse_app/presentation/style/theming/theme_builder.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +42,10 @@ class _AppState extends State<App> {
             },
             initalizedBuilder: (context) => Provider<ApiClient>.value(
               value: _apiClient,
-              child: const HomePage(),
+              child: RepositoryBuilder(
+                apiClient: _apiClient,
+                child: const HomePage(),
+              ),
             ),
           ),
         );

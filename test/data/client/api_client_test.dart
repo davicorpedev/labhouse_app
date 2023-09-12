@@ -3,11 +3,10 @@ import 'package:http/http.dart' as http;
 import 'package:labhouse_app/data/client/api_client.dart';
 import 'package:labhouse_app/data/client/api_requester.dart';
 import 'package:labhouse_app/data/error/exceptions.dart';
-import 'package:labhouse_app/data/models/radio_station_model.dart';
-import 'package:labhouse_app/domain/entitites/id.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../fixtures/fixture_reader.dart';
+import '../../utils/mock_radio_stations.dart';
 
 class MockApiRequester extends Mock implements ApiRequester {}
 
@@ -21,23 +20,6 @@ void main() {
   });
 
   group('getRadioStations', () {
-    const tRadioStationModelList = [
-      RadioStationModel(
-        id: ID('test1'),
-        name: 'TEST 1 FM',
-        image: 'test1.jpg',
-        streamURL: 'test1.mp3',
-        homepage: 'test1.com',
-      ),
-      RadioStationModel(
-        id: ID('test2'),
-        name: 'TEST 2 FM',
-        image: 'test2.jpg',
-        streamURL: 'test2.mp3',
-        homepage: 'test2.com',
-      ),
-    ];
-
     void mockGetRadioStationsSuccess() {
       when(
         () => mockApiRequester.get(
@@ -62,7 +44,7 @@ void main() {
         verify(
           () => mockApiRequester.get(
             path: 'stations',
-            queryParameters: {'limit': 20},
+            queryParameters: {'limit': '20'},
           ),
         ).called(1);
       },
