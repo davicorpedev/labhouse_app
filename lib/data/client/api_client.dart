@@ -19,7 +19,7 @@ class LiveApiClient implements ApiClient {
     final response = await _apiRequester.get(
       path: 'stations',
       queryParameters: {
-        'limit': 20,
+        'limit': '20',
       },
     );
 

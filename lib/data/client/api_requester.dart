@@ -4,12 +4,12 @@ import 'package:labhouse_app/data/error/exceptions.dart';
 abstract class ApiRequester {
   Future<http.Response> get({
     required String path,
-    Map<String, dynamic>? queryParameters = const {},
+    Map<String, String>? queryParameters = const {},
   });
 
   Future<http.Response> post({
     required String path,
-    Map<String, dynamic>? queryParameters = const {},
+    Map<String, String>? queryParameters = const {},
   });
 }
 
@@ -29,15 +29,17 @@ class HttpApiRequester extends ApiRequester {
   @override
   Future<http.Response> get({
     required String path,
-    Map<String, dynamic>? queryParameters = const {},
+    Map<String, String>? queryParameters = const {},
   }) async {
     try {
+      final uri = Uri.https(
+        _baseUrl,
+        '/$_format/$path',
+        queryParameters,
+      );
+
       final response = await _client.get(
-        Uri.https(
-          _baseUrl,
-          '/$_format/$path',
-          queryParameters,
-        ),
+        uri,
         headers: {},
       );
 
@@ -54,7 +56,7 @@ class HttpApiRequester extends ApiRequester {
   @override
   Future<http.Response> post({
     required String path,
-    Map<String, dynamic>? queryParameters = const {},
+    Map<String, String>? queryParameters = const {},
   }) async {
     try {
       final response = await _client.post(
