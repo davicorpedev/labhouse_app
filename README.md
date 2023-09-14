@@ -18,17 +18,6 @@ To run all unit and widget tests use the following command:
 $ flutter test
 ```
 
-To view the generated coverage report you can use lcov or the VSCode Flutter Coverage Extension.
-
-```sh
-# Run all tests
-$ flutter test --coverage
-# Generate Coverage Report
-$ genhtml coverage/lcov.info -o coverage/
-# Open Coverage Report
-$ open coverage/index.html
-```
-
 ## Architecture
 - Application
     - Responsible for State Management 

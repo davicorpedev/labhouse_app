@@ -54,14 +54,14 @@ class RadioStationDetailBloc
     PauseRadioEvent event,
     Emitter<RadioStationDetailState> emit,
   ) async {
-    _repository.pause();
+    await _repository.pause();
   }
 
   Future<void> _onPlayRadioEvent(
     PlayRadioEvent event,
     Emitter<RadioStationDetailState> emit,
   ) async {
-    _repository.play();
+    await _repository.play();
   }
 
   Future<void> _onStartRadioEvent(
