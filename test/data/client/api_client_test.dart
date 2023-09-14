@@ -44,7 +44,7 @@ void main() {
         verify(
           () => mockApiRequester.get(
             path: 'stations',
-            queryParameters: {'limit': '20'},
+            queryParameters: {'limit': '20', 'hidebroken': 'true'},
           ),
         ).called(1);
       },

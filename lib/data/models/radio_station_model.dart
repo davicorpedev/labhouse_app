@@ -6,8 +6,8 @@ class RadioStationModel extends RadioStation {
     required super.id,
     required super.name,
     required super.streamURL,
-    required super.homepage,
     required super.image,
+    required super.country,
   });
 
   factory RadioStationModel.fromJson(Map<String, dynamic> json) {
@@ -15,8 +15,8 @@ class RadioStationModel extends RadioStation {
       id: ID(json['stationuuid']),
       name: json['name'],
       streamURL: json['url'],
-      homepage: json['homepage'],
       image: json['favicon'],
+      country: json['country'],
     );
   }
 }

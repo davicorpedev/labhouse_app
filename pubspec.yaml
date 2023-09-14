@@ -24,6 +24,10 @@ dependencies:
   http: ^1.1.0
   # Configuration
   global_configs: ^1.1.2
+  # Media
+  assets_audio_player: ^3.1.1
+  # UI
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

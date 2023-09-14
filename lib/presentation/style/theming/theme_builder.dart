@@ -6,9 +6,16 @@ extension ThemeBuilder on AppTheme {
     return ThemeData(
       primaryColor: primary,
       brightness: brightness,
+      scaffoldBackgroundColor: background,
       colorScheme: ColorScheme.fromSwatch().copyWith(
         primary: primary,
         secondary: secondary,
+        brightness: brightness,
+      ),
+      appBarTheme: AppBarTheme(
+        elevation: 0,
+        color: background,
+        foregroundColor: primary,
       ),
     );
   }
