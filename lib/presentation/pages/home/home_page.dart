@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:labhouse_app/application/home/home_bloc.dart';
 import 'package:labhouse_app/domain/repositories/radio_station_repository.dart';
 import 'package:labhouse_app/presentation/pages/home/widgets/radio_stations_grid.dart';
+import 'package:labhouse_app/presentation/utils/map_failure_to_message.dart';
 import 'package:labhouse_app/presentation/widgets/app_error.dart';
 import 'package:labhouse_app/presentation/widgets/background.dart';
 
@@ -95,9 +96,7 @@ class _HomeBodyState extends State<HomeBody> {
                       case HomeInitialState():
                       case HomeLoadingState():
                         return const SliverFillRemaining(
-                          child: Center(
-                            child: CircularProgressIndicator(),
-                          ),
+                          child: Center(child: CircularProgressIndicator()),
                         );
                       case HomeLoadedState():
                         return RadioStationsGrid(
@@ -107,7 +106,7 @@ class _HomeBodyState extends State<HomeBody> {
                         return SliverFillRemaining(
                           child: Center(
                             child: AppError(
-                              description: 'Err',
+                              description: mapFailureToMessage(state.failure),
                               refresh: () => context.read<HomeBloc>().add(
                                     GetRadioStationsEvent(),
                                   ),

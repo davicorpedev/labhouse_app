@@ -25,7 +25,7 @@ void main() {
     'start',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call open from AssetsAudioPlayer',
         () async {
           when(() => mockAssetsAudioPlayer.open(any())).thenAnswer(
             (_) => Future.value(),
@@ -45,7 +45,7 @@ void main() {
     'play',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call play from AssetsAudioPlayer',
         () async {
           when(() => mockAssetsAudioPlayer.play()).thenAnswer(
             (_) => Future.value(),
@@ -63,7 +63,7 @@ void main() {
     'pause',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call pause from AssetsAudioPlayer',
         () async {
           when(() => mockAssetsAudioPlayer.pause()).thenAnswer(
             (_) => Future.value(),
@@ -81,7 +81,7 @@ void main() {
     'setVolume',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call setVolume from AssetsAudioPlayer',
         () async {
           when(() => mockAssetsAudioPlayer.setVolume(any())).thenAnswer(
             (_) => Future.value(),
@@ -99,7 +99,7 @@ void main() {
     'dispose',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call dispose from AssetsAudioPlayer',
         () async {
           when(() => mockAssetsAudioPlayer.dispose()).thenAnswer(
             (_) => Future.value(),
@@ -117,7 +117,7 @@ void main() {
     'isPlaying',
     () {
       test(
-        'Listens to RadioPlayer Stream',
+        'Listens to isPlaying AssetsAudioPlayer Stream',
         () {
           when(() => mockAssetsAudioPlayer.isPlaying).thenAnswer(
             (invocation) => BehaviorSubject.seeded(true),
@@ -137,7 +137,7 @@ void main() {
     'currentPosition',
     () {
       test(
-        'Listens to RadioPlayer Stream',
+        'Listens to currentPosition AssetsAudioPlayer Stream',
         () {
           when(() => mockAssetsAudioPlayer.currentPosition).thenAnswer(
             (invocation) => BehaviorSubject.seeded(const Duration(seconds: 1)),
@@ -157,7 +157,7 @@ void main() {
     'volume',
     () {
       test(
-        'Listens to RadioPlayer Stream',
+        'Listens to volume AssetsAudioPlayer Stream',
         () {
           when(() => mockAssetsAudioPlayer.volume).thenAnswer(
             (invocation) => BehaviorSubject.seeded(1),

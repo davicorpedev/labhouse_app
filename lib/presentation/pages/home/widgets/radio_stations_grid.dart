@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:labhouse_app/domain/entitites/radio_station.dart';
 import 'package:labhouse_app/presentation/pages/radio_station_detail/radio_station_detail_page.dart';
+import 'package:labhouse_app/presentation/style/theming/app_themes.dart';
 import 'package:labhouse_app/presentation/utils/navigator.dart';
 
 class RadioStationsGrid extends StatelessWidget {
@@ -47,6 +49,14 @@ class _Card extends StatelessWidget {
                   child: Image.network(
                     radioStation.image,
                     fit: BoxFit.cover,
+                  ),
+                )
+              else
+                Positioned.fill(
+                  child: Icon(
+                    Icons.radio_rounded,
+                    size: 80,
+                    color: context.read<AppTheme>().secondary,
                   ),
                 ),
               Positioned.fill(

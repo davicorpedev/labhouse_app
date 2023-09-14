@@ -10,6 +10,8 @@ const tRadioStationModel = RadioStationModel(
   country: 'test',
 );
 
+const tRadioStation = tRadioStationModel;
+
 final tRadioStationModelList = [
   const RadioStationModel(
     id: ID('test1'),

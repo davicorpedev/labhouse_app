@@ -17,12 +17,14 @@ class RadioStationDetailBloc
     required RadioPlayerRepository repository,
     required this.radioStation,
   })  : _repository = repository,
-        super(const RadioStationDetailState(
-          loadingState: LoadingState.loading,
-          isPlaying: false,
-          volume: 1,
-          currenPosition: Duration.zero,
-        )) {
+        super(
+          const RadioStationDetailState(
+            loadingState: LoadingState.loading,
+            isPlaying: false,
+            volume: 1,
+            currenPosition: Duration.zero,
+          ),
+        ) {
     _repository.isPlaying.listen((isPlaying) {
       add(SubListenedEvent(isPlaying: isPlaying));
     });

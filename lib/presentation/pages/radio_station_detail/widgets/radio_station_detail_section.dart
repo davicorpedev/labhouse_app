@@ -15,7 +15,7 @@ class RadioStationDetailSection extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        RadioStationImage(
+        _Image(
           image: radioStation.image,
           size: 160,
         ),
@@ -74,12 +74,11 @@ class _CurrentPosition extends StatelessWidget {
   }
 }
 
-class RadioStationImage extends StatelessWidget {
+class _Image extends StatelessWidget {
   final String image;
   final double size;
 
-  const RadioStationImage({
-    super.key,
+  const _Image({
     required this.image,
     required this.size,
   });

@@ -22,7 +22,7 @@ void main() {
     'start',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call start from RadioPlayer',
         () async {
           when(() => mockRadioPlayer.start(any())).thenAnswer(
             (_) => Future.value(),
@@ -40,7 +40,7 @@ void main() {
     'play',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call play from RadioPlayer',
         () async {
           when(() => mockRadioPlayer.play()).thenAnswer(
             (_) => Future.value(),
@@ -58,7 +58,7 @@ void main() {
     'pause',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call pause from RadioPlayer',
         () async {
           when(() => mockRadioPlayer.pause()).thenAnswer(
             (_) => Future.value(),
@@ -76,7 +76,7 @@ void main() {
     'setVolume',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call setVolume from RadioPlayer',
         () async {
           when(() => mockRadioPlayer.setVolume(any())).thenAnswer(
             (_) => Future.value(),
@@ -94,7 +94,7 @@ void main() {
     'dispose',
     () {
       test(
-        'should call submethod from RadioPlayer',
+        'should call dispose from RadioPlayer',
         () async {
           when(() => mockRadioPlayer.dispose()).thenAnswer(
             (_) => Future.value(),
@@ -112,7 +112,7 @@ void main() {
     'isPlaying',
     () {
       test(
-        'Listens to RadioPlayer Stream',
+        'Listens to isPlaying RadioPlayer Stream',
         () {
           when(() => mockRadioPlayer.isPlaying).thenAnswer(
             (invocation) => Stream.value(true),
@@ -132,7 +132,7 @@ void main() {
     'currentPosition',
     () {
       test(
-        'Listens to RadioPlayer Stream',
+        'Listens to currentPosition RadioPlayer Stream',
         () {
           when(() => mockRadioPlayer.currentPosition).thenAnswer(
             (invocation) => Stream.value(const Duration(seconds: 1)),
@@ -152,7 +152,7 @@ void main() {
     'volume',
     () {
       test(
-        'Listens to RadioPlayer Stream',
+        'Listens to volume RadioPlayer Stream',
         () {
           when(() => mockRadioPlayer.volume).thenAnswer(
             (invocation) => Stream.value(1),
