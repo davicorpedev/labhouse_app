@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 abstract class AppTheme {
   late final Color primary;
   late final Color secondary;
+  late final Color background;
   late final Brightness brightness;
 }
 
-class LightTheme implements AppTheme {
+class DarkTheme implements AppTheme {
   @override
-  Color primary = const Color(0xFFf0e4b1);
+  Color primary = Colors.white;
 
   @override
-  Color secondary = const Color(0xFF5a3a1a);
+  Color background = Colors.transparent;
 
   @override
-  Brightness brightness = Brightness.light;
+  Color secondary = const Color(0xffe22255);
+
+  @override
+  Brightness brightness = Brightness.dark;
 }

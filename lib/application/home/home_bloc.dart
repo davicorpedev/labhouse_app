@@ -4,33 +4,33 @@ import 'package:labhouse_app/domain/entitites/radio_station.dart';
 import 'package:labhouse_app/domain/error/failures.dart';
 import 'package:labhouse_app/domain/repositories/radio_station_repository.dart';
 
-part 'radio_stations_event.dart';
-part 'radio_stations_state.dart';
+part 'home_event.dart';
+part 'home_state.dart';
 
-class RadioStationsBloc extends Bloc<RadioStationsEvent, RadioStationsState> {
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final RadioStationRepository _repository;
 
-  RadioStationsBloc({
+  HomeBloc({
     required RadioStationRepository repository,
   })  : _repository = repository,
-        super(RadioStationsInitialState()) {
-    on<GetRadioStationsEvent>(_onGetRadioStations);
+        super(HomeInitialState()) {
+    on<GetRadioStationsEvent>(_onGetRadioStationsEvent);
   }
 
-  Future<void> _onGetRadioStations(
+  Future<void> _onGetRadioStationsEvent(
     GetRadioStationsEvent event,
-    Emitter<RadioStationsState> emit,
+    Emitter<HomeState> emit,
   ) async {
-    emit(RadioStationsLoadingState());
+    emit(HomeLoadingState());
 
     final result = await _repository.getRadioStations();
 
     result.when(
       success: (radioStations) {
-        emit(RadioStationsLoadedState(radioStations: radioStations));
+        emit(HomeLoadedState(radioStations: radioStations));
       },
       error: (failure) {
-        emit(RadioStationsErrorState(failure: failure));
+        emit(HomeErrorState(failure: failure));
       },
     );
   }

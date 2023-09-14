@@ -4,7 +4,7 @@ import 'package:labhouse_app/config/global_config.dart';
 import 'package:labhouse_app/data/client/api_client.dart';
 import 'package:labhouse_app/data/client/api_requester.dart';
 import 'package:labhouse_app/presentation/app_initializer.dart';
-import 'package:labhouse_app/presentation/pages/home_page.dart';
+import 'package:labhouse_app/presentation/pages/home/home_page.dart';
 import 'package:labhouse_app/presentation/repository_builder.dart';
 import 'package:labhouse_app/presentation/style/theming/app_themes.dart';
 import 'package:labhouse_app/presentation/style/theming/theme_builder.dart';
@@ -23,7 +23,7 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
-    _appTheme = LightTheme();
+    _appTheme = DarkTheme();
 
     super.initState();
   }
@@ -33,6 +33,7 @@ class _AppState extends State<App> {
     return MaterialApp(
       title: 'LabHouse Radio App',
       theme: _appTheme.themeData,
+      home: const HomePage(),
       builder: (context, widget) {
         return Provider<AppTheme>.value(
           value: _appTheme,
@@ -44,7 +45,7 @@ class _AppState extends State<App> {
               value: _apiClient,
               child: RepositoryBuilder(
                 apiClient: _apiClient,
-                child: const HomePage(),
+                child: widget!,
               ),
             ),
           ),

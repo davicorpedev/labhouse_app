@@ -5,15 +5,15 @@ class RadioStation extends Equatable {
   final ID<RadioStation> id;
   final String name;
   final String streamURL;
-  final String homepage;
   final String image;
+  final String country;
 
   const RadioStation({
     required this.id,
     required this.name,
     required this.streamURL,
-    required this.homepage,
     required this.image,
+    required this.country,
   });
 
   @override
@@ -21,7 +21,7 @@ class RadioStation extends Equatable {
         id,
         name,
         streamURL,
-        homepage,
         image,
+        country,
       ];
 }

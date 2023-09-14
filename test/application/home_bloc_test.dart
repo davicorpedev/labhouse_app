@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:labhouse_app/application/radio_stations/radio_stations_bloc.dart';
+import 'package:labhouse_app/application/home/home_bloc.dart';
 import 'package:labhouse_app/domain/entitites/radio_station.dart';
 import 'package:labhouse_app/domain/entitites/result.dart';
 import 'package:labhouse_app/domain/error/failures.dart';
@@ -24,9 +24,9 @@ void main() {
   group(
     'GetRadioStations',
     () {
-      blocTest<RadioStationsBloc, RadioStationsState>(
+      blocTest<HomeBloc, HomeState>(
         'should call getRadioStations from repository',
-        build: () => RadioStationsBloc(repository: mockRadioStationRepository),
+        build: () => HomeBloc(repository: mockRadioStationRepository),
         setUp: () {
           when(() => mockRadioStationRepository.getRadioStations()).thenAnswer(
             (_) async => Result<List<RadioStation>>.success(tRadioStationList),
@@ -38,9 +38,9 @@ void main() {
         },
       );
 
-      blocTest<RadioStationsBloc, RadioStationsState>(
+      blocTest<HomeBloc, HomeState>(
         'should emit [Loading, Loaded] when the request has succeded',
-        build: () => RadioStationsBloc(repository: mockRadioStationRepository),
+        build: () => HomeBloc(repository: mockRadioStationRepository),
         setUp: () {
           when(() => mockRadioStationRepository.getRadioStations()).thenAnswer(
             (_) async => Result<List<RadioStation>>.success(tRadioStationList),
@@ -48,14 +48,14 @@ void main() {
         },
         act: (bloc) => bloc.add(GetRadioStationsEvent()),
         expect: () => [
-          RadioStationsLoadingState(),
-          RadioStationsLoadedState(radioStations: tRadioStationList),
+          HomeLoadingState(),
+          HomeLoadedState(radioStations: tRadioStationList),
         ],
       );
 
-      blocTest<RadioStationsBloc, RadioStationsState>(
+      blocTest<HomeBloc, HomeState>(
         'should emit [Loading, Error] when the request has failed',
-        build: () => RadioStationsBloc(repository: mockRadioStationRepository),
+        build: () => HomeBloc(repository: mockRadioStationRepository),
         setUp: () {
           when(() => mockRadioStationRepository.getRadioStations()).thenAnswer(
             (_) async => Result<List<RadioStation>>.error(NetworkFailure()),
@@ -63,8 +63,8 @@ void main() {
         },
         act: (bloc) => bloc.add(GetRadioStationsEvent()),
         expect: () => [
-          RadioStationsLoadingState(),
-          RadioStationsErrorState(failure: NetworkFailure()),
+          HomeLoadingState(),
+          HomeErrorState(failure: NetworkFailure()),
         ],
       );
     },

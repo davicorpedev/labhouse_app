@@ -20,6 +20,7 @@ class LiveApiClient implements ApiClient {
       path: 'stations',
       queryParameters: {
         'limit': '20',
+        'hidebroken': 'true',
       },
     );
 

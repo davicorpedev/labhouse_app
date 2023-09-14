@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:labhouse_app/presentation/widgets/background.dart';
 
 class AppSplash extends StatelessWidget {
   final Widget? child;
@@ -8,8 +9,7 @@ class AppSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Theme.of(context).scaffoldBackgroundColor,
+      body: Background(
         child: child,
       ),
     );
