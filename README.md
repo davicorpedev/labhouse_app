@@ -1,21 +1,44 @@
 # LabHouse Radio App
 
-## Config
+## How to run
 
-## Radio APIS
+Flutter Version: 3.13.3
 
-https://api.radio-browser.info/
+To run the desired project either use the launch configuration in VSCode/Android Studio or use the following commands:
 
-## packages
+```sh
+$ flutter run
+```
 
-https://pub.dev/packages/audio_wave
-https://pub.dev/packages/audio_waveforms
+## Testing
 
-## Designs
+To run all unit and widget tests use the following command:
 
-https://www.google.com/search?sca_esv=564766799&q=radio+app+design&tbm=isch&source=lnms&sa=X&sqi=2&ved=2ahUKEwiVirCP4aWBAxW4WaQEHXpKC9UQ0pQJegQIChAB&biw=1920&bih=931&dpr=1#imgrc=DADkpmWGO_m32M
+```sh
+$ flutter test
+```
 
-https://cdn.dribbble.com/users/1686073/screenshots/16388008/media/1c85c2bf408be9004b4bb71d3ff2afae.jpg?resize=400x0
-https://cdn.dribbble.com/users/1192538/screenshots/5680985/media/223fd578330d69e6a1d87761e60ce8c8.png?resize=400x300&vertical=center
-https://assets.materialup.com/uploads/69b785ee-bee1-4259-9a67-f30df7bd3767/radio.jpg
+To view the generated coverage report you can use lcov or the VSCode Flutter Coverage Extension.
 
+```sh
+# Run all tests
+$ flutter test --coverage
+# Generate Coverage Report
+$ genhtml coverage/lcov.info -o coverage/
+# Open Coverage Report
+$ open coverage/index.html
+```
+
+## Architecture
+- Application
+    - Responsible for State Management 
+    - Contains Blocs, Events and States
+    - It is the connection between Business Logic (Repositories) and UI
+- Data
+    - Responsible for getting Remote Data and transforming it into Models
+- Domain
+    - Responsible for the Business Logic
+    - It should be independent to the changes on the Data Layer
+- Presentation
+    - Responsible for the UI
+    - Widgets call Bloc Events and listen Bloc States

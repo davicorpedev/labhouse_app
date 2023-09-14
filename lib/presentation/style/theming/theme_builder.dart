@@ -4,6 +4,7 @@ import 'package:labhouse_app/presentation/style/theming/app_themes.dart';
 extension ThemeBuilder on AppTheme {
   ThemeData get themeData {
     return ThemeData(
+      fontFamily: 'Montserrat',
       primaryColor: primary,
       brightness: brightness,
       scaffoldBackgroundColor: background,

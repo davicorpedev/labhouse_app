@@ -1,9 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labhouse_app/domain/repositories/radio_player_repository.dart';
 import 'package:labhouse_app/domain/utils/radio_player.dart';
 import 'package:mocktail/mocktail.dart';
-
-//TODO: https://stackoverflow.com/questions/56621534/how-to-unit-test-stream-listen-in-dart
 
 class MockRadioPlayer extends Mock implements RadioPlayer {}
 
@@ -103,6 +103,66 @@ void main() {
           await repository.dispose();
 
           verify(() => mockRadioPlayer.dispose()).called(1);
+        },
+      );
+    },
+  );
+
+  group(
+    'isPlaying',
+    () {
+      test(
+        'Listens to RadioPlayer Stream',
+        () {
+          when(() => mockRadioPlayer.isPlaying).thenAnswer(
+            (invocation) => Stream.value(true),
+          );
+
+          var stream = repository.isPlaying;
+
+          expectLater(stream, emits(true));
+
+          repository.isPlaying.first;
+        },
+      );
+    },
+  );
+
+  group(
+    'currentPosition',
+    () {
+      test(
+        'Listens to RadioPlayer Stream',
+        () {
+          when(() => mockRadioPlayer.currentPosition).thenAnswer(
+            (invocation) => Stream.value(const Duration(seconds: 1)),
+          );
+
+          var stream = repository.currentPosition;
+
+          expectLater(stream, emits(const Duration(seconds: 1)));
+
+          repository.currentPosition.first;
+        },
+      );
+    },
+  );
+
+  group(
+    'volume',
+    () {
+      test(
+        'Listens to RadioPlayer Stream',
+        () {
+          when(() => mockRadioPlayer.volume).thenAnswer(
+            (invocation) => Stream.value(1),
+          );
+
+          var stream = repository.volume;
+
+          expectLater(stream, emits(1));
+
+          repository.volume.first;
         },
       );
     },
